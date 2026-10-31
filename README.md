@@ -16,9 +16,6 @@
 
 ---
 
-Image Carousel / Slider by **Abhishek Jadhav** — Web Developer and first-year BCA student at VIIT, Baramati. Built with **HTML5 + CSS3 + Vanilla JavaScript**: a responsive, accessible image slider with autoplay, hover-pause, clickable indicators, keyboard navigation, slide counter, and per-slide titles. No frameworks, no build step, no backend.
-
-> **Internship attribution:** 45-day Web Development Internship at **Veda Technology** — Day 22: Image Carousel/Slider.
 
 ## Features
 
@@ -91,12 +88,6 @@ node --check script.js
 - [x] Layout works at 320px, 375px, 768px, 1024px+.
 - [x] No JavaScript console errors.
 - [x] `prefers-reduced-motion` respected.
-
-## Limitations
-
-- Uses remote images (requires network connection); graceful fallback provided.
-- No touch-swipe gestures (button/keyboard/dot navigation only).
-- No dark mode variant.
 
 ---
 
