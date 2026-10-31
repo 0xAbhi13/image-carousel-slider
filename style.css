@@ -1,0 +1,287 @@
+/* Image Carousel / Slider — Veda Technology Internship Day 22 */
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --accent-dark: #1d4ed8;
+  --accent-soft: #eff6ff;
+  --warm: #f97316;
+  --warm-soft: #fff7ed;
+  --border: #e5e7eb;
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 14px 40px rgba(15, 23, 42, 0.12);
+  --radius: 18px;
+  --radius-sm: 10px;
+  --transition: 0.3s ease;
+  --slide-transition: 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+  --container: 1000px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+img { max-width: 100%; display: block; }
+
+.page {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-3) var(--space-4);
+}
+
+/* ---------- Header ---------- */
+.page__header {
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-1);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+}
+
+.page__title {
+  margin: 0 0 var(--space-1);
+  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.page__subtitle {
+  margin: 0 auto;
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* ---------- Carousel ---------- */
+.carousel {
+  outline: none;
+}
+
+.carousel__viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 540px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #e5e7eb;
+  box-shadow: var(--shadow-md);
+}
+
+.carousel__track {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform var(--slide-transition);
+  will-change: transform;
+}
+
+.carousel__slide {
+  flex: 0 0 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+.carousel__slide.is-active img {
+  transform: scale(1.02);
+}
+
+/* ---------- Nav buttons ---------- */
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--text);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
+  transition: background var(--transition), transform 0.2s ease, color var(--transition), opacity var(--transition);
+}
+
+.carousel__btn:hover {
+  background: #ffffff;
+  color: var(--accent);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.carousel__btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.carousel__btn:active { transform: translateY(-50%) scale(0.96); }
+
+.carousel__btn svg { width: 22px; height: 22px; }
+
+.carousel__btn--prev { left: 16px; }
+.carousel__btn--next { right: 16px; }
+
+/* ---------- Meta (title/desc + counter) ---------- */
+.carousel__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.carousel__text {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.carousel__title {
+  margin: 0 0 0.25rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: opacity 0.25s ease;
+}
+
+.carousel__desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.carousel__counter {
+  flex-shrink: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+.carousel__counter span.slash { color: var(--warm); }
+
+/* ---------- Indicators ---------- */
+.carousel__indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: var(--space-3);
+}
+
+.carousel__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: none;
+  background: #cbd5e1;
+  cursor: pointer;
+  padding: 0;
+  transition: width var(--transition), background var(--transition), transform 0.2s ease;
+}
+
+.carousel__dot:hover { background: #94a3b8; transform: scale(1.15); }
+
+.carousel__dot:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.carousel__dot.is-active {
+  width: 34px;
+  background: var(--accent);
+}
+
+/* ---------- Footer ---------- */
+.page__footer {
+  margin-top: var(--space-5);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-3);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 768px) {
+  .page { padding: var(--space-4) var(--space-2) var(--space-3); }
+  .carousel__viewport { aspect-ratio: 4 / 3; max-height: 420px; }
+  .carousel__btn { width: 40px; height: 40px; }
+  .carousel__btn svg { width: 19px; height: 19px; }
+  .carousel__btn--prev { left: 12px; }
+  .carousel__btn--next { right: 12px; }
+  .carousel__title { font-size: 1.15rem; }
+  .carousel__desc { font-size: 0.92rem; }
+  .carousel__counter { font-size: 0.95rem; padding: 0.4rem 0.75rem; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 480px) {
+  .page { padding: var(--space-3) 1rem var(--space-3); }
+  .carousel__viewport { aspect-ratio: 3 / 2; max-height: 300px; border-radius: 14px; }
+  .carousel__btn { width: 36px; height: 36px; }
+  .carousel__btn svg { width: 17px; height: 17px; }
+  .carousel__btn--prev { left: 10px; }
+  .carousel__btn--next { right: 10px; }
+  .carousel__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .carousel__counter { align-self: flex-end; }
+  .carousel__title { font-size: 1.05rem; }
+  .page__subtitle { font-size: 0.95rem; }
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 360px) {
+  .carousel__viewport { aspect-ratio: 4 / 3; }
+  .carousel__dot.is-active { width: 26px; }
+  .page__title { font-size: 1.6rem; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .carousel__track { transition: none !important; }
+  .carousel__slide img { transition: none !important; }
+  .carousel__btn, .carousel__dot { transition: none !important; }
+  .carousel__title { transition: none !important; }
+}

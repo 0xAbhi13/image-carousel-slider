@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Carousel / Slider — Veda Technology Internship Day 22</title>
+  <meta name="description" content="A polished, responsive image carousel with autoplay, hover pause, indicators, and keyboard navigation, built with HTML5, CSS3, and vanilla JavaScript." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="page__header">
+      <p class="eyebrow">VEDA TECHNOLOGY INTERNSHIP &middot; DAY 22 / 45</p>
+      <h1 class="page__title">Image Carousel / Slider</h1>
+      <p class="page__subtitle">
+        A responsive, accessible image slider with autoplay, hover-pause, clickable indicators,
+        and keyboard navigation &mdash; built with HTML5, CSS3, and vanilla JavaScript.
+      </p>
+    </header>
+
+    <section class="carousel" id="carousel" aria-roledescription="carousel" aria-label="Featured image slides" tabindex="0">
+      <div class="carousel__viewport">
+        <div class="carousel__track" id="carouselTrack">
+          <article class="carousel__slide" data-index="0" data-title="Modern Architecture" data-description="Glass and steel skylines rising against a clear blue sky." aria-roledescription="slide" aria-label="Slide 1 of 5">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80" alt="Modern glass skyscrapers reaching into a clear blue sky" loading="eager" decoding="async" />
+          </article>
+          <article class="carousel__slide" data-index="1" data-title="Nature &amp; Mountains" data-description="Snow-capped peaks and alpine valleys at golden hour." aria-roledescription="slide" aria-label="Slide 2 of 5">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80" alt="Snow-capped mountain peaks glowing at golden hour" loading="lazy" decoding="async" />
+          </article>
+          <article class="carousel__slide" data-index="2" data-title="Technology Workspace" data-description="A clean developer desk with code on screen and natural light." aria-roledescription="slide" aria-label="Slide 3 of 5">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1600&q=80" alt="Laptop on a tidy desk with code on screen in natural light" loading="lazy" decoding="async" />
+          </article>
+          <article class="carousel__slide" data-index="3" data-title="Ocean &amp; Beaches" data-description="Turquoise waves rolling onto a sunlit sandy shore." aria-roledescription="slide" aria-label="Slide 4 of 5">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80" alt="Turquoise ocean waves meeting a sunlit sandy beach" loading="lazy" decoding="async" />
+          </article>
+          <article class="carousel__slide" data-index="4" data-title="City Landscapes" data-description="A vibrant urban skyline glowing at twilight." aria-roledescription="slide" aria-label="Slide 5 of 5">
+            <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1600&q=80" alt="Vibrant city skyline glowing at twilight" loading="lazy" decoding="async" />
+          </article>
+        </div>
+
+        <button type="button" class="carousel__btn carousel__btn--prev" id="prevBtn" aria-label="Previous slide">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="carousel__btn carousel__btn--next" id="nextBtn" aria-label="Next slide">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="carousel__meta">
+        <div class="carousel__text" id="slideText" aria-live="polite">
+          <h2 class="carousel__title" id="slideTitle">Modern Architecture</h2>
+          <p class="carousel__desc" id="slideDescription">Glass and steel skylines rising against a clear blue sky.</p>
+        </div>
+        <div class="carousel__counter" id="slideCounter" aria-live="polite" aria-atomic="true">01 / 05</div>
+      </div>
+
+      <div class="carousel__indicators" id="indicators" role="tablist" aria-label="Slide indicators">
+        <button type="button" class="carousel__dot is-active" data-index="0" role="tab" aria-selected="true" aria-label="Go to slide 1"></button>
+        <button type="button" class="carousel__dot" data-index="1" role="tab" aria-selected="false" aria-label="Go to slide 2"></button>
+        <button type="button" class="carousel__dot" data-index="2" role="tab" aria-selected="false" aria-label="Go to slide 3"></button>
+        <button type="button" class="carousel__dot" data-index="3" role="tab" aria-selected="false" aria-label="Go to slide 4"></button>
+        <button type="button" class="carousel__dot" data-index="4" role="tab" aria-selected="false" aria-label="Go to slide 5"></button>
+      </div>
+    </section>
+
+    <footer class="page__footer">
+      Built by Abhishek Jadhav &middot; Veda Technology Internship &mdash; Day 22/45 &middot; HTML5 &middot; CSS3 &middot; Vanilla JavaScript
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
